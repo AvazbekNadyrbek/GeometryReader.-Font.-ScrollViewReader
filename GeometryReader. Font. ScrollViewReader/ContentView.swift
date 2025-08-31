@@ -22,14 +22,6 @@ struct ContentView: View {
             Text("Hello, world!")
                 .font(storyScript: .regular, size: 30)
         }
-        .onAppear {
-            for family in UIFont.familyNames {
-                print("Family: \(family)")
-                for name in UIFont.fontNames(forFamilyName: family) {
-                    print("   \(name)")
-                }
-            }
-        }
         .padding()
     }
 }
