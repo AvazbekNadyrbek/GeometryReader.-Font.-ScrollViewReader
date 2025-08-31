@@ -14,8 +14,41 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+                .font(.custom("Asimovian", size: 30))
+            Text("Hello, world!")
+                .font(.custom("StoryScript-Regular", size: 30))
+            Text("Hello, world!")
+                .font(asimovian: .regular, size: 30)
+            Text("Hello, world!")
+                .font(storyScript: .regular, size: 30)
+        }
+        .onAppear {
+            for family in UIFont.familyNames {
+                print("Family: \(family)")
+                for name in UIFont.fontNames(forFamilyName: family) {
+                    print("   \(name)")
+                }
+            }
         }
         .padding()
+    }
+}
+
+enum Asimovian: String {
+    case regular = "Asimovian"
+}
+
+enum StoryScript: String {
+    case regular = "StoryScript-Regular"
+}
+
+extension View {
+    func font(asimovian: Asimovian, size: CGFloat = 16) -> some View {
+        self.font(.custom(asimovian.rawValue, size: size))
+    }
+    
+    func font(storyScript: StoryScript, size: CGFloat = 16) -> some View {
+        self.font(.custom(storyScript.rawValue, size: size))
     }
 }
 
